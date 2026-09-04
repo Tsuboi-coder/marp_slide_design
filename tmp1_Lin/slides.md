@@ -19,10 +19,12 @@ size: 16:9
 
 # 目次
 
-1. Transformerとは何か
-2. Attentionの考え方
-3. Transformerの構造
-4. まとめ
+<!-- AUTO-TOC:START -->
+- Transformerとは何か
+- Attentionの考え方
+- Transformerの構造
+- まとめ
+<!-- AUTO-TOC:END -->
 
 ---
 
@@ -56,7 +58,6 @@ Transformerを理解するための中心的な考え方
 <!-- _class: section -->
 
 # SECTION 02
-
 ## Attentionの考え方
 
 文脈の中でどの単語に注目するべきかを重要度に基づいて考える，
@@ -76,7 +77,6 @@ Transformerを理解するための中心的な考え方
 <!-- _class: section -->
 
 # SECTION 03
-
 ## Transformerの構造
 
 入力された文章が処理される流れを整理します。

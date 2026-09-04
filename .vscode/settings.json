@@ -1,0 +1,6 @@
+{
+  "markdown.marp.themes": [
+    "./tmp1_Lin/base-design.css",
+    "./tmp1_Lin/formal-design.css"
+  ]
+}

@@ -10,6 +10,11 @@
   --theme-text: #1f2933;
   --theme-muted: #66737f;
   --theme-line: #c6ead3;
+  --theme-soft-background: linear-gradient(
+    135deg,
+    white 0%,
+    var(--theme-accent-light) 100%
+  );
 }
 
 /* `color: green|blue|red|orange|purple|peach` で全ページの配色を切り替える */
@@ -142,6 +147,18 @@ section:not(.title)::after {
  * タイトルページ
  * ======================================================= */
 
+/* 表紙と目次で、同じ位置・角度・形状の斜め色面を共有する */
+section.title,
+section:not(.title).toc {
+  background:
+    linear-gradient(
+      108deg,
+      transparent 0 76%,
+      color-mix(in srgb, var(--theme-accent) 14%, transparent) 76%
+    ),
+    var(--theme-soft-background);
+}
+
 section.title {
   display: flex;
   flex-direction: column;
@@ -153,13 +170,6 @@ section.title {
 
   color: var(--theme-text);
   text-align: left;
-  background:
-    linear-gradient(
-      108deg,
-      transparent 0 76%,
-      color-mix(in srgb, var(--theme-accent) 14%, transparent) 76%
-    ),
-    linear-gradient(135deg, white 0%, var(--theme-accent-light) 100%);
   border-left: 24px solid var(--theme-accent);
 }
 
@@ -210,22 +220,18 @@ section.title::after {
  * 目次ページ: <!-- _class: toc -->
  * ======================================================= */
 
-section.toc {
-  background:
-    linear-gradient(
-      108deg,
-      transparent 0 76%,
-      color-mix(in srgb, var(--theme-accent) 14%, transparent) 76%
-    ),
-    linear-gradient(135deg, white 0%, var(--theme-accent-light) 100%);
+section:not(.title).toc {
+  position: relative;
+  /* 表紙と背景の描画領域を揃える（表紙の緑線に相当する白ボーダー） */
+  border-left: 24px solid white;
 }
 
-section.toc ol {
+section.toc ul {
   display: flex;
   flex-direction: column;
   gap: 0;
 
-  width: 82%;
+  width: 50%;
   margin: 0;
   padding: 0;
 
@@ -233,14 +239,14 @@ section.toc ol {
   list-style: none;
 }
 
-section.toc ol > li {
+section.toc ul > li {
   display: flex;
   align-items: center;
   gap: 22px;
 
-  min-height: 76px;
+  min-height: 48px;
   margin: 0;
-  padding: 12px 4px;
+  padding: 4px;
 
   font-size: 29px;
   background: transparent;
@@ -249,7 +255,7 @@ section.toc ol > li {
   counter-increment: toc-item;
 }
 
-section.toc ol > li::before {
+section.toc ul > li::before {
   content: counter(toc-item, decimal-leading-zero);
 
   flex: 0 0 auto;
@@ -284,7 +290,7 @@ section.section {
       transparent 26.8%,
       transparent 100%
     ),
-    white;
+    var(--theme-soft-background);
 }
 
 section.section > h1 {
@@ -333,13 +339,11 @@ section.section::after {
  * ======================================================= */
 
 section.summary {
-  background: color-mix(in srgb, var(--theme-accent-light) 62%, white);
+  background: var(--theme-soft-background);
 }
 
 section.summary ul {
-  display: grid;
-  gap: 16px;
-
+  display: block;
   margin: 4px 0 0;
   padding: 0;
   list-style: none;
@@ -347,27 +351,19 @@ section.summary ul {
 
 section.summary ul > li {
   position: relative;
-
-  margin: 0;
-  padding: 17px 24px 17px 62px;
-
-  background: white;
-  border: 1px solid var(--theme-line);
-  border-left: 5px solid var(--theme-accent);
-  border-radius: 8px;
-  box-shadow: none;
+  margin: 0 0 14px;
+  padding: 0 0 0 1.65em;
+  background: transparent;
+  border: 0;
 }
 
 section.summary ul > li::before {
-  content: "✓";
-
+  content: "•";
   position: absolute;
-  top: 15px;
-  left: 23px;
-
+  top: 0;
+  left: 0.2em;
   color: var(--theme-accent);
-  font-size: 25px;
-  font-weight: 700;
+  font-size: 1em;
 }
 
 /* =========================================================
