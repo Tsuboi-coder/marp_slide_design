@@ -1,0 +1,317 @@
+/* @theme ynu-blue */
+
+@import 'default';
+
+:root {
+  --main-blue: #00552e;
+  --accent-blue: #07883f;
+  --text-main: #20242a;
+  --text-sub: #5f6873;
+  --light-gray: #f3f5f7;
+}
+
+/* =========================================
+   基本スライド
+   ========================================= */
+
+section {
+  width: 1280px;
+  height: 720px;
+
+  font-family:
+    Helvetica,
+    "Helvetica Neue",
+    "Hiragino Maru Gothic ProN",
+    "Hiragino Maru Gothic Pro",
+    Arial,
+    sans-serif;
+
+  font-size: 28px;
+  color: var(--text-main);
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--main-blue) 0%,
+      #006f38 55%,
+      var(--accent-blue) 100%
+    )
+    top / 100% 72px no-repeat,
+    linear-gradient(
+      to bottom,
+      rgba(21, 47, 78, 0.28),
+      rgba(21, 47, 78, 0.10) 45%,
+      rgba(21, 47, 78, 0)
+    )
+    0 72px / 100% 14px no-repeat,
+    white;
+
+  padding:
+    110px 64px 48px 60px;
+
+  position: relative;
+}
+
+/* 通常ページは、内容を見出し直下から左揃えで配置する */
+section:not(.title):not(.section) {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+/* =========================================
+   ページ番号
+   ========================================= */
+
+section::after {
+  content: attr(data-marpit-pagination);
+
+  position: absolute;
+
+  top: 15px;
+  right: 48px;
+
+  color: white;
+  font-size: 30px;
+  font-weight: 400;
+}
+
+/* =========================================
+   見出し
+   ========================================= */
+
+h1 {
+  font-size: 42px;
+  font-family:
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    sans-serif;
+  font-weight: 600;
+  color: var(--text-main);
+
+  margin:
+    0
+    0
+    30px
+    0;
+}
+
+/* 通常ページのタイトルを上部のセクション帯に表示 */
+section:not(.title):not(.section) > h1 {
+  position: absolute;
+  top: 0;
+  left: 60px;
+  right: 120px;
+
+  height: 72px;
+  margin: 0;
+
+  color: white;
+  font-size: 34px;
+  line-height: 72px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+h2 {
+  font-size: 32px;
+  color: var(--main-blue);
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 27px;
+  color: var(--main-blue);
+}
+
+/* =========================================
+   本文
+   ========================================= */
+
+p,
+li {
+  line-height: 1.55;
+}
+
+ul,
+ol {
+  margin-top: 12px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+strong {
+  color: var(--main-blue);
+}
+
+/* =========================================
+   表
+   ========================================= */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 23px;
+}
+
+th {
+  background: var(--main-blue);
+  color: white;
+  padding: 10px;
+}
+
+td {
+  padding: 9px 12px;
+  border-bottom: 1px solid #d8dde3;
+}
+
+/* =========================================
+   引用・補足
+   ========================================= */
+
+blockquote {
+  border-left: 5px solid var(--accent-blue);
+  padding-left: 20px;
+  color: var(--text-sub);
+}
+
+/* =========================================
+   コード
+   ========================================= */
+
+code {
+  font-family:
+    "SFMono-Regular",
+    "Consolas",
+    monospace;
+}
+
+pre {
+  font-size: 20px;
+  background: var(--light-gray);
+  border-radius: 8px;
+  padding: 18px;
+}
+
+/* =========================================
+   タイトルスライド
+   ========================================= */
+
+section.title {
+  position: relative;
+
+  /* 右上85%から右下69%へ、約74度で左下がりになる色境界 */
+  background: linear-gradient(
+    106deg,
+    #004d2a 0%,
+    #004d2a 73.1%,
+    #07883f 73.1%,
+    #07883f 100%
+  );
+
+  color: white;
+
+  padding:
+    120px
+    110px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+/* タイトルページではページ番号を表示しない */
+section.title::after {
+  display: none;
+}
+
+/* メインタイトル */
+section.title h1 {
+  position: relative;
+  inset: auto;
+
+  width: 70%;
+
+  margin: 0 0 22px;
+
+  color: white;
+
+  font-size: 58px;
+  font-weight: 600;
+  line-height: 1.25;
+
+  letter-spacing: 0.02em;
+}
+
+/* サブタイトル */
+section.title h2 {
+  width: 65%;
+
+  margin: 0 0 70px;
+
+  color: rgba(255, 255, 255, 0.88);
+
+  font-size: 30px;
+  font-weight: 400;
+}
+
+/* 色面は section.title の背景へ直接描画する */
+section.title::before {
+  content: none;
+}
+
+/* タイトル文字を右側の色面より手前に置く */
+section.title > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================================
+   章扉
+   ========================================= */
+
+section.section {
+  background:
+    linear-gradient(
+      110deg,
+      #00552e,
+      #07883f
+    );
+
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+section.section h1 {
+  color: white;
+  font-size: 58px;
+}
+
+section.section::after {
+  color: white;
+}
+
+/* =========================================
+   まとめスライド
+   ========================================= */
+
+section.summary h1 {
+  color: var(--main-blue);
+  font-size: 46px;
+}
+
+section.summary ul {
+  font-size: 30px;
+}

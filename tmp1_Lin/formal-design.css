@@ -1,0 +1,358 @@
+/* @theme formal-design */
+
+@import 'default';
+
+:root {
+  --formal-green: #17633b;
+  --formal-green-dark: #10482c;
+  --formal-green-pale: #edf5f0;
+  --formal-text: #202823;
+  --formal-muted: #657069;
+  --formal-line: #cbd8d0;
+  --formal-paper: #ffffff;
+}
+
+/* `color: green|blue|red|orange|purple|peach` で全ページの配色を切り替える */
+section[data-color="green"] {
+  --formal-green: #17633b;
+  --formal-green-dark: #10482c;
+  --formal-green-pale: #edf5f0;
+  --formal-line: #cbd8d0;
+}
+
+section[data-color="blue"] {
+  --formal-green: #2563a6;
+  --formal-green-dark: #173f70;
+  --formal-green-pale: #edf4fb;
+  --formal-line: #cbd9e8;
+}
+
+section[data-color="red"] {
+  --formal-green: #b23a3a;
+  --formal-green-dark: #782626;
+  --formal-green-pale: #fbefef;
+  --formal-line: #e8cccc;
+}
+
+section[data-color="orange"] {
+  --formal-green: #c2631b;
+  --formal-green-dark: #81400f;
+  --formal-green-pale: #fff3e9;
+  --formal-line: #ecd4c1;
+}
+
+section[data-color="purple"] {
+  --formal-green: #7651a8;
+  --formal-green-dark: #4f3475;
+  --formal-green-pale: #f4eff9;
+  --formal-line: #dcd0e9;
+}
+
+section[data-color="peach"] {
+  --formal-green: #d47761;
+  --formal-green-dark: #8d4939;
+  --formal-green-pale: #fff2ed;
+  --formal-line: #edd3ca;
+}
+
+/* =========================================================
+ * 共通レイアウト
+ * 学会・研究発表を想定し、色面は抑えて余白と罫線で整理する。
+ * ======================================================= */
+
+section {
+  width: 1280px;
+  height: 720px;
+  padding: 108px 72px 58px;
+
+  color: var(--formal-text) !important;
+  font-family:
+    Helvetica,
+    "Helvetica Neue",
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Arial,
+    sans-serif;
+  font-size: 25px;
+  text-align: left;
+  background: var(--formal-paper);
+}
+
+section:not(.title):not(.section):not(.statement) {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+section:not(.title):not(.section):not(.statement)::before {
+  content: "";
+  position: absolute;
+  top: 82px;
+  left: 72px;
+  right: 72px;
+  height: 2px;
+  background: var(--formal-line);
+}
+
+section:not(.title):not(.section):not(.statement) > h1 {
+  position: absolute;
+  top: 26px;
+  left: 72px;
+  right: 150px;
+  height: 48px;
+  margin: 0;
+
+  color: var(--formal-green-dark);
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 48px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+section::after {
+  top: auto;
+  right: 72px;
+  bottom: 22px;
+  left: auto;
+
+  color: var(--formal-muted);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3 {
+  font-family:
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
+h2 {
+  margin: 0 0 18px;
+  color: var(--formal-green-dark);
+  font-size: 31px;
+}
+
+h3 {
+  color: var(--formal-green);
+  font-size: 26px;
+}
+
+p,
+li {
+  line-height: 1.55;
+}
+
+li {
+  margin-bottom: 9px;
+}
+
+strong {
+  color: var(--formal-green-dark);
+}
+
+blockquote {
+  margin-left: 0;
+  padding: 12px 22px;
+  color: var(--formal-text);
+  background: var(--formal-green-pale);
+  border-left: 4px solid var(--formal-green);
+}
+
+pre {
+  padding: 16px 20px;
+  font-size: 20px;
+  background: #f4f6f5;
+  border: 1px solid #dfe5e1;
+  border-radius: 2px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 22px;
+}
+
+th {
+  padding: 10px 12px;
+  color: white;
+  background: var(--formal-green-dark);
+}
+
+td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--formal-line);
+}
+
+/* =========================================================
+ * タイトルページ
+ * ======================================================= */
+
+section.title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 96px 104px;
+
+  color: var(--formal-text);
+  background: white;
+  border-top: 12px solid var(--formal-green);
+}
+
+section.title::before {
+  content: "";
+  width: 92px;
+  height: 4px;
+  margin-bottom: 30px;
+  background: var(--formal-green);
+}
+
+section.title h1 {
+  width: 88%;
+  margin: 0 0 16px;
+  color: var(--formal-green-dark);
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+
+section.title h2 {
+  width: 82%;
+  margin: 0 0 64px;
+  color: var(--formal-text);
+  font-size: 29px;
+  font-weight: 400;
+}
+
+section.title p {
+  margin: 0;
+  color: var(--formal-muted);
+  font-size: 22px;
+}
+
+section.title::after {
+  display: none;
+}
+
+/* =========================================================
+ * 目次
+ * ======================================================= */
+
+section.toc ol {
+  width: 88%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: formal-toc;
+}
+
+section.toc ol > li {
+  display: flex;
+  align-items: center;
+  min-height: 72px;
+  margin: 0;
+  padding: 10px 6px;
+  font-size: 28px;
+  border-bottom: 1px solid var(--formal-line);
+  counter-increment: formal-toc;
+}
+
+section.toc ol > li::before {
+  content: counter(formal-toc, decimal-leading-zero);
+  width: 58px;
+  color: var(--formal-green);
+  font-size: 23px;
+  font-weight: 600;
+}
+
+/* =========================================================
+ * 章扉、ステートメント、まとめ
+ * ======================================================= */
+
+section.section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 100px 130px;
+
+  color: var(--formal-text);
+  background: white;
+  border-left: 14px solid var(--formal-green);
+}
+
+section.section > h1 {
+  margin: 0 0 24px;
+  color: var(--formal-green);
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 25px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+}
+
+section.section > h2 {
+  width: 100%;
+  margin: 0 0 28px;
+  color: var(--formal-green-dark);
+  font-size: 52px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+section.section > p {
+  max-width: 930px;
+  margin: 0;
+  color: var(--formal-muted);
+  font-size: 23px;
+}
+
+section.statement {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 100px 130px;
+  background: var(--formal-green-pale);
+  border-left: 14px solid var(--formal-green);
+}
+
+section.statement > h1 {
+  max-width: 1020px;
+  margin: 0;
+  color: var(--formal-green-dark);
+  font-size: 46px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+section.statement > p {
+  margin: 30px 0 0;
+  color: var(--formal-muted);
+  font-size: 22px;
+}
+
+section.statement::after {
+  display: none;
+}
+
+section.summary {
+  background: #f8faf9;
+}
+
+section.summary ul {
+  margin-top: 8px;
+  padding-left: 1.35em;
+}
+
+section.summary li::marker {
+  color: var(--formal-green);
+}
